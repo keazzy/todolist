@@ -1,4 +1,7 @@
-const firebaseConfig = firebse.intializeApp({
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+const firebaseConfig = firebase.intializeApp({
     apikey = '',
     authDomain = '',
     databaseURL = '',
