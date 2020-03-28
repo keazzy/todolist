@@ -1,5 +1,5 @@
 import React from 'react';
-import firebase from 'firebase';
+import {firebase} from '../firebase';
 
 export const Checkbox = ({ id }) => {
     const archiveTask = () => {
@@ -9,13 +9,15 @@ export const Checkbox = ({ id }) => {
             .doc(id)
             .update({
                 archived: true,
-            })
-    }
+            });
+    };
 
     return(
-        <div className="ckeckbox-holder" data-testid="checkbox-action"
-        onClick={() => archiveTask()}>
+        <div 
+            className="ckeckbox-holder" 
+            data-testid="checkbox-action"
+            onClick={() => archiveTask()}>
             <span className="checkbox" />
         </div>
-    )
+    );
 };

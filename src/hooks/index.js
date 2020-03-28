@@ -22,12 +22,12 @@ export const useTasks = selectedProject => {
             '==', 
             moment().format('DD/MM/YY')
             ))
-        : selectedProject == 'INBOX' || selectedProject === 0
+        : selectedProject === 'INBOX' || selectedProject === 0
         ? (unsubscribe = unsubscribe.where('date', '==', '' ))
         : unsubscribe;
 
-        unsubscribe = unsubscribe.onSnapshot(onSnapshot) (snapshot => {
-            const newTasks = snapshot.doc(task => ({
+        unsubscribe = unsubscribe.onSnapshot(snapshot => {
+            const newTasks = snapshot.docs.map(task => ({
                 id: task.id,
                 ...task.data(),
             }));
@@ -63,15 +63,15 @@ export const useProjects = () => {
             .orderBy('projectId')
             .get()
             .then(snapshot => {
-                const allProjects = snapshot.doc.map(project => ({
+                const allProjects = snapshot.docs.map(project => ({
                     ...project.data(),
-                    docId: project.id,
+                    docId: project.id
                 }));
 
                 if (JSON.stringify(allProjects) !== JSON.stringify(projects)){
                     setProjects(allProjects);
                 }
-            } )
+            });
     }, [projects]);
     return {projects, setProjects };
 }

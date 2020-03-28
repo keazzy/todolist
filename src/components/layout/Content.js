@@ -1,6 +1,5 @@
 import React from 'react';
-import {Header} from './Header';
-import {Tasks} from './Tasks'
+import {Tasks} from '../Tasks'
 import {Sidebar} from './Sidebar';
 
 export const Content = () => (
