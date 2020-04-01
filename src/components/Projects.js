@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {useSelectedProjectValue, useProjectsValue} from '../context';
 
-export const Projects = () => {
+export const Projects = ({ activeValue = null }) => {
     const [active , setActive] = useState(activeValue);
     const { setSelectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
@@ -22,12 +22,12 @@ export const Projects = () => {
                 }
                 
                 onKeyDown   ={() => {
-                    setActive(Project.projectId);
+                    setActive(project.projectId);
                     setSelectedProject(project.projectId);
                 }}
 
                 onClick={() => {
-                    setActive(Project.projectId);
+                    setActive(project.projectId);
                     setSelectedProject(project.projectId);
                 }}
             >I am a project</li>
